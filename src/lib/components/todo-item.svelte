@@ -1,10 +1,18 @@
-<div class="todo">
+<script lang="ts">
+    export let todo: Todo;
+</script>
+
+<div class="todo" >
     <form action="" method="" aria-label="Check a todo">
-        <input type="hidden" name="done" id="" value="" />
-        <button aria-label="Toggle Done" class="toggle" ></button>
+        <input type="hidden" name="done" id=""/>
+        <button
+            aria-label="Toggle Done"
+            class="toggle"
+            
+        />
     </form>
     <form action="" method="" class="text">
-        <input type="text" value="" />
+        <input type="text" bind:value={todo.text} />
         <button aria-label="Save changes to todo" class="save" />
     </form>
     <form action="" method="">
@@ -102,18 +110,14 @@
         border: 1px solid #444;
         opacity: 0.6;
     }
-    
-    
+
     .done {
         transform: none;
         opacity: 0.7;
-    
     }
 
     .done .toggle {
         background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAxMi4xMTZsMi4wNTMtMS44OTdjMi40MDEgMS4xNjIgMy45MjQgMi4wNDUgNi42MjIgMy45NjkgNS4wNzMtNS43NTcgOC40MjYtOC42NzggMTQuNjU3LTEyLjU1NWwuNjY4IDEuNTM2Yy01LjEzOSA0LjQ4NC04LjkwMiA5LjQ3OS0xNC4zMjEgMTkuMTk4LTMuMzQzLTMuOTM2LTUuNTc0LTYuNDQ2LTkuNjc5LTEwLjI1MXoiLz48L3N2Zz4=")
             no-repeat center;
     }
-
-
 </style>
