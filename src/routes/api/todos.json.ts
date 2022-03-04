@@ -10,15 +10,15 @@ export const post: RequestHandler<{}, FormData> = async ({ request }) => {
 
     const data = await request.formData();
 
-    const text = data.get("todo");
+    const text = data.get("todo").toString();
 
     const todo: Todo = {
         uid: `${Date.now()}`, //TODO replace uid with uuid from DB
-        text: text.toString(),
+        text,
         done: false,
         created_at: new Date()
 
     }
 
-    return await api({ request, todo });
+    return await api({ request, data: { todo } });
 }

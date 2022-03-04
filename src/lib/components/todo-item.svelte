@@ -2,17 +2,24 @@
     export let todo: Todo;
 </script>
 
-<div class="todo" >
-    <form action="" method="" aria-label="Check a todo">
-        <input type="hidden" name="done" id=""/>
+<div class="todo" class:done={todo.done}>
+    <form
+        action={`/api/${todo.uid}.json?_method=patch`}
+        method="post"
+        aria-label="Check a todo"
+    >
+        <input type="hidden" name="done" id="" value={todo.done ? false : true} />
         <button
-            aria-label="Toggle Done"
+            aria-label="Mark todo as {todo.done ? 'not done' : 'done'}"
             class="toggle"
-            
         />
     </form>
-    <form action="" method="" class="text">
-        <input type="text" bind:value={todo.text} />
+    <form
+        action={`/api/${todo.uid}.json?_method=patch`}
+        method="post"
+        class="text"
+    >
+        <input type="text" value={todo.text} name="todo" />
         <button aria-label="Save changes to todo" class="save" />
     </form>
     <form action={`/api/${todo.uid}.json?_method=delete`} method="post">

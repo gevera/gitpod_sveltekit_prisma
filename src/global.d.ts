@@ -9,6 +9,10 @@ type Todo = {
 
 interface InputApi {
     request: Request;
-    todo?: Todo;
-    uid?: string;
+    data?: {
+        todo?: Todo;
+        uid?: string;
+        text?: string;
+        done?: boolean;
+    }
 }
