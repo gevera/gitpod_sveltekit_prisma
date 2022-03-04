@@ -1,13 +1,28 @@
-<div class="todo">
-    <form action="" method="" aria-label="Check a todo">
-        <input type="hidden" name="done" id="" value="" />
-        <button aria-label="Toggle Done" class="toggle" ></button>
+<script lang="ts">
+    export let todo: Todo;
+</script>
+
+<div class="todo" class:done={todo.done}>
+    <form
+        action={`/api/${todo.uid}.json?_method=patch`}
+        method="post"
+        aria-label="Check a todo"
+    >
+        <input type="hidden" name="done" id="" value={todo.done ? false : true} />
+        <button
+            aria-label="Mark todo as {todo.done ? 'not done' : 'done'}"
+            class="toggle"
+        />
     </form>
-    <form action="" method="" class="text">
-        <input type="text" value="" />
+    <form
+        action={`/api/${todo.uid}.json?_method=patch`}
+        method="post"
+        class="text"
+    >
+        <input type="text" value={todo.text} name="todo" />
         <button aria-label="Save changes to todo" class="save" />
     </form>
-    <form action="" method="">
+    <form action={`/api/${todo.uid}.json?_method=delete`} method="post">
         <button aria-label="Delete todo" class="delete" />
     </form>
 </div>
@@ -102,18 +117,14 @@
         border: 1px solid #444;
         opacity: 0.6;
     }
-    
-    
+
     .done {
         transform: none;
         opacity: 0.7;
-    
     }
 
     .done .toggle {
         background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAxMi4xMTZsMi4wNTMtMS44OTdjMi40MDEgMS4xNjIgMy45MjQgMi4wNDUgNi42MjIgMy45NjkgNS4wNzMtNS43NTcgOC40MjYtOC42NzggMTQuNjU3LTEyLjU1NWwuNjY4IDEuNTM2Yy01LjEzOSA0LjQ4NC04LjkwMiA5LjQ3OS0xNC4zMjEgMTkuMTk4LTMuMzQzLTMuOTM2LTUuNTc0LTYuNDQ2LTkuNjc5LTEwLjI1MXoiLz48L3N2Zz4=")
             no-repeat center;
     }
-
-
 </style>
