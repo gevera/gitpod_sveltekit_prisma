@@ -22,7 +22,6 @@
     import TodoItem from "$lib/components/todo-item.svelte";
     let title = "Todos";
     export let todos: Todo[];
-    console.log(todos);
 </script>
 
 <svelte:head>
