@@ -29,7 +29,6 @@ export const api = async ({ request, data }: InputApi) => {
             status = 200;
             break;
         case "PATCH":
-            console.log(data.done);
             todos = todos.map(todo => {
                 if (todo.uid == data.uid) {
                     if (data.text) todo.text = data.text;
@@ -38,6 +37,7 @@ export const api = async ({ request, data }: InputApi) => {
                 return todo
             })
             status = 200;
+            body = todos.find(t => t.uid == data.uid);
             break;
 
 
@@ -45,7 +45,7 @@ export const api = async ({ request, data }: InputApi) => {
             break;
     }
 
-    if (request.method.toUpperCase() !== 'GET') {
+    if (request.method.toUpperCase() !== 'GET' && request.headers.get('accept') !== 'application/json') {
         return {
             status: 303,
             headers: {
